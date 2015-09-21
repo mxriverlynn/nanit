@@ -50,10 +50,12 @@ run as an initializer. Each of the files should contain an
 export with a signature like this:
 
 ```js
-function initMyAwesomeThing(arg, next){
+function initMyAwesomeThing(next){
   // when you're done, call next
   next();
 }
+
+module.exports = initMyAwesomeThing;
 ```
 
 Once you have your initializers setup, you can run them from
@@ -62,7 +64,7 @@ your application, like this:
 ```js
 var nanit = require("nanit")
 
-nanit.intialize(function(err, result){
+nanit.intialize(function(err){
   // start the real app, now
 });
 ```
@@ -89,8 +91,20 @@ nanit.intialize(app, function(err, result){
 });
 ```
 
-The first argument will be passed along to all initialzers. If
-you need multiple arguments, use an object literal with
+The first argument will be passed along to all initialzers. 
+
+```js
+// initializers/foo.js
+module.exports = function(arg, next){
+  
+  // use the arg
+  doStuff(arg, () => {
+    next();
+  });
+};
+```
+
+If you need multiple arguments, use an object literal with
 `key: value` pairs for named arguments.
 
 ## Errors In Initializers
