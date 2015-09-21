@@ -23,6 +23,11 @@ Nanit - the Node Application Initialzer - allows you to easily
 and cleanly sepearate the initializers from the main parts of
 your code. 
 
+### Runtime Requirements
+
+Nanit uses several new ES6 features internally. You must be running
+Node v4, io.js v3 or greater to use nanit.
+
 ## Getting Started
 
 To get rolling, you need to install nanit in to your project:

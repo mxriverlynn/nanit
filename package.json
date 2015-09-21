@@ -2,7 +2,7 @@
   "name": "nanit",
   "version": "0.0.1",
   "description": "Node Application Initializers",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,5 +25,15 @@
   "bugs": {
     "url": "https://github.com/derickbailey/nanit/issues"
   },
-  "homepage": "https://github.com/derickbailey/nanit#readme"
+  "homepage": "https://github.com/derickbailey/nanit#readme",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.3",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-jasmine-nodejs": "^1.4.3"
+  },
+  "engines": { 
+    "node": ">4.0.0",
+    "iojs": ">3.0.0"
+  } 
 }

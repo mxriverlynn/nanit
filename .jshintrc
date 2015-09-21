@@ -1,0 +1,37 @@
+{
+  "curly": true,
+  "eqeqeq": true,
+  "immed": false,
+  "latedef": true,
+  "newcap": true,
+  "noarg": true,
+  "sub": true,
+  "undef": true,
+  "boss": true,
+  "eqnull": true,
+  "browser": true,
+  "strict": false,
+  "globalstrict": true,
+  "latedef": "nofunc",
+  "esnext": true,
+  "debug": true,
+  "globals": {
+    "setImmediate": true,
+    "docCookies": true,
+    "accounting": true,
+    "given": true,
+    "when": true,
+    "then": true,
+    "describe": true,
+    "xdescribe": true,
+    "it": true,
+    "expect": true,
+    "jasmine": true,
+    "beforeEach": true,
+    "moment": true,
+    "console": true,
+    "require": true,
+    "module": true
+  }
+}
+
