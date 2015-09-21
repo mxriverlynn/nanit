@@ -112,11 +112,10 @@ If you need multiple arguments, use an object literal with
 If your initialzer hits an error, return it through the `next(err)`
 method call:
 
-
 ```js
-var nanit = require("nanit")
+// initializers/foo.js
 
-nanit.intialize(function(err, result){
+module.exports = function(next){
   // if you get an error, call next(err)
 
   doStuff((err) => {
@@ -127,6 +126,21 @@ nanit.intialize(function(err, result){
     // done, no error
     next();
   });
+
+}
+```
+
+Then in your `nanit.initialze` call, be sure to check the
+first parameter of the callback for an error.
+
+
+```js
+var nanit = require("nanit")
+
+nanit.intialize(function(err){
+
+  // throw or log it or whatever you want
+  if (err) { throw err; }
 
 });
 ```
