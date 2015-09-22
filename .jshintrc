@@ -16,6 +16,7 @@
   "esnext": true,
   "debug": true,
   "globals": {
+    "process": true,
     "setImmediate": true,
     "docCookies": true,
     "accounting": true,

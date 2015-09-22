@@ -1,6 +1,4 @@
 var path = require("path");
-var process = require("process");
-
 var nanit = require("../lib");
 
 
