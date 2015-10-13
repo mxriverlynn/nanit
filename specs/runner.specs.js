@@ -1,4 +1,4 @@
-var nanit = require("../lib");
+var Runner = require("../lib/runner");
 
 describe("run initializers", function(){
 
@@ -25,7 +25,7 @@ describe("run initializers", function(){
 
       var initializers = [init1, init2];
 
-      var runner = new nanit.Runner(initializers);
+      var runner = new Runner(initializers);
       runner.run(arg, function(err){
         completed = true;
       });
@@ -65,7 +65,7 @@ describe("run initializers", function(){
 
       var initializers = [init1, init2];
 
-      var runner = new nanit.Runner(initializers);
+      var runner = new Runner(initializers);
       runner.run({}, function(err){
         actualError = err;
       });
@@ -103,7 +103,7 @@ describe("run initializers", function(){
 
       var initializers = [init1, init2];
 
-      var runner = new nanit.Runner(initializers);
+      var runner = new Runner(initializers);
       runner.run(function(err){
         completed = true;
       });
@@ -147,7 +147,7 @@ describe("run initializers", function(){
 
       var initializers = [init1, init2];
 
-      var runner = new nanit.Runner(initializers);
+      var runner = new Runner(initializers);
       runner.run(arg, function(err){
         completed = true;
       });

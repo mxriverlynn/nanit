@@ -1,6 +1,5 @@
 var path = require("path");
-var nanit = require("../lib");
-
+var Nanit = require("../lib");
 
 describe("nanit", function(){
   var initializerFolder = path.resolve(process.cwd(), "specs", "initializers");
@@ -13,7 +12,8 @@ describe("nanit", function(){
       global.init1 = false;
       global.init2 = false;
 
-      nanit.initialize(initializerFolder, {},function(err){
+      var nanit = new Nanit({folder: initializerFolder});
+      nanit.initialize(function(err){
         completed = true;
       });
     });
