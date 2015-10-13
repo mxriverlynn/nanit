@@ -102,7 +102,30 @@ module.exports = function(arg, next){
 If you need multiple arguments, use an object literal with
 `key: value` pairs for named arguments.
 
-## Errors In Initializers
+## Use A Custom Initializers Folder
+
+The default `Nanit.initialize()` call will look for a folder located at `./initializers`.
+
+If you need to provide a custom initializers folder, you can do so by creating
+an instance of `Nanit`, passing an options object to the constructor.
+
+```js
+var Nanit = require("nanit");
+
+
+// provide a custom initializers folder
+var nanit = new Nanit({
+  folder: "my/custom/initializers/folder"
+});
+
+
+nanit.initialize(function(err){
+  // ...
+});
+
+```
+
+## Handling Errors In Initializers
 
 If your initialzer hits an error, return it through the `next(err)`
 method call:
@@ -127,7 +150,6 @@ module.exports = function(next){
 
 Then in your `nanit.initialze` call, be sure to check the
 first parameter of the callback for an error.
-
 
 ```js
 var nanit = require("nanit")
