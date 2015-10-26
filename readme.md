@@ -148,7 +148,7 @@ module.exports = function(next){
 }
 ```
 
-Then in your `nanit.initialze` call, be sure to check the
+Then in your `nanit.initialize` call, be sure to check the
 first parameter of the callback for an error.
 
 ```js
