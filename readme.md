@@ -36,13 +36,18 @@ project structure:
 /my-project
   /lib
   /initializers
+  /finalziers
   /web
   /...etc
 </pre>
 
 In the `initializers` folder, place any `.js` files you want to
-run as an initializer. Each of the files should contain an
-export with a signature like this:
+run as an initializer.
+
+In the `finalizers` fodler, place any `.js` files that should be
+run just before the application shuts down or exits.
+
+Each of the files should contain an export with a signature like this:
 
 ```js
 function initMyAwesomeThing(next){
@@ -61,6 +66,18 @@ var nanit = require("nanit")
 
 nanit.intialize(function(err){
   // start the real app, now
+});
+```
+
+Finalizers are executed in the same manner, only calling the `finalize`
+method instead:
+
+```js
+var nanit = require("nanit")
+
+nanit.finalize(function(err){
+  // exit the app, here
+  proces.exit();
 });
 ```
 
@@ -124,10 +141,31 @@ nanit.initialize(function(err){
 });
 
 ```
+## Use A Custom Finalizers Folder
 
-## Handling Errors In Initializers
+The default `Nanit.finalize()` call will look for a folder located at `./finalizers`.
 
-If your initialzer hits an error, return it through the `next(err)`
+If you need to provide a custom initializers folder, you can do so by creating
+an instance of `Nanit`, passing an options object to the constructor.
+
+```js
+var Nanit = require("nanit");
+
+
+// provide a custom finalizer folder
+var nanit = new Nanit({
+  finalizerFonder: "my/custom/finalizer/folder"
+});
+
+
+nanit.finalize(function(err){
+  // ...
+});
+```
+
+## Handling Errors
+
+If your initialzer or finalizer hits an error, return it through the `next(err)`
 method call:
 
 ```js
@@ -148,7 +186,7 @@ module.exports = function(next){
 }
 ```
 
-Then in your `nanit.initialze` call, be sure to check the
+Then in your `nanit.initialze` or `nanit.finalize` call, be sure to check the
 first parameter of the callback for an error.
 
 ```js
@@ -159,15 +197,23 @@ nanit.intialize(function(err){
   // throw or log it or whatever you want
   if (err) { throw err; }
 
+  // ...
+});
+
+// ...
+
+nanit.finalize(function(err){
+  if (err) { throw err; }
+  // ...
 });
 ```
 
 Any error returns through the `next(err)` call will force 
-the initializers to stop executing and immediately return the
-error to the initialize callback.
+the initializers/finalizers to stop executing and immediately return the
+error to the callback.
 
 ## Legal Mumbo-Jumbo
 
-Copyright 2015 Muted Solutions, LLC. All Rights Reserved.
+Copyright &copy;2016 Muted Solutions, LLC. All Rights Reserved.
 
 Nanit is distributed under the [MIT License](http://mutedsolutions.mit-license.org)
