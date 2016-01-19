@@ -5,23 +5,26 @@ before starting the main processing.
 
 ## What Is This?
 
-Applications often need to have various systems initialized and
-configured before the main process starts up. 
-
-For example, most
-Express apps need a database connection, some routing, maybe
-an external message server and other bits. Thesse things must
-be up and running before the Express app can start listening
-for incoming requests. 
-
-Unfortunately, Express (and most other Node frameworks) doesn't
-have a simple way to do this. You end up writing a lot of ugly
-code in your `bin/www` file or the `app.js` file to handle
-your application initialization.
-
 Nanit - the Node Application Initialzer - allows you to easily
-and cleanly sepearate the initializers from the main parts of
+and cleanly sepearate the initializers and finalizers from the main parts of
 your code. 
+
+### Why?
+
+Applications often need to have various systems initialized and
+configured before the main process starts up. Additionally, there
+may be connections and external resources that need to be cleaned
+up before the application exits.
+
+For example, most Express apps need a database connection, or maybe 
+an external message server. These things must be up and running before 
+the Express app can start listening for incoming requests. 
+
+Unfortunately, Express doesn't have a simple way to do this. You end 
+up writing a lot of ugly code in your `bin/www` file or the `app.js` 
+file to handle your application initialization. And most Node apps don't
+have any kind of shut-down capabilities, other than crash and hope the
+connections don't leak.
 
 ## Getting Started
 
@@ -29,11 +32,11 @@ To get rolling, you need to install nanit in to your project:
 
 `npm install --save nanit`
 
-Then you need to create an 'initializers' folder in your
-project structure:
+Then you need to create an 'initializers' and an optional 'finalizers' 
+folder in your project structure:
 
 <pre>
-/my-project
+./my-project
   /lib
   /initializers
   /finalziers
