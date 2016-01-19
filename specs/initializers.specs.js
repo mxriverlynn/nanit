@@ -1,7 +1,7 @@
 var path = require("path");
 var Nanit = require("../lib");
 
-describe("nanit", function(){
+describe("file initializers", function(){
   var initializerFolder = path.resolve(process.cwd(), "specs", "initializers");
   
   describe("when loading initializers from files", function(){
