@@ -39,7 +39,7 @@ folder in your project structure:
 ./my-project
   /lib
   /initializers
-  /finalziers
+  /finalizers
   /web
   /...etc
 </pre>
