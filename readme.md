@@ -45,7 +45,7 @@ folder in your project structure:
 </pre>
 
 In the `initializers` folder, place any `.js` files you want to
-run as an initializer.
+run as an initializer. These files will be run in sorted alphabetical order.
 
 In the `finalizers` fodler, place any `.js` files that should be
 run just before the application shuts down or exits.
