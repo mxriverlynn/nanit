@@ -157,7 +157,7 @@ var Nanit = require("nanit");
 
 // provide a custom finalizer folder
 var nanit = new Nanit({
-  finalizerFonder: "my/custom/finalizer/folder"
+  finalizerFolder: "my/custom/finalizer/folder"
 });
 
 
