@@ -67,7 +67,7 @@ your application, like this:
 ```js
 var nanit = require("nanit")
 
-nanit.intialize(function(err){
+nanit.initialize(function(err){
   // start the real app, now
 });
 ```
@@ -95,7 +95,7 @@ var express = require("express");
 
 var app = express();
 
-nanit.intialize(app, function(err, result){
+nanit.initialize(app, function(err, result){
   
   // check for errors
   if (err) { 
@@ -195,7 +195,7 @@ first parameter of the callback for an error.
 ```js
 var nanit = require("nanit")
 
-nanit.intialize(function(err){
+nanit.initialize(function(err){
 
   // throw or log it or whatever you want
   if (err) { throw err; }
